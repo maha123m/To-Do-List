@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# To Do List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple To-Do List application built using React, `localStorage`, and the `useContext` hook. The application allows users to manage tasks with the ability to filter by "All", "Active", and "Completed" tasks.
 
-## Available Scripts
+## Project Structure
 
-In the project directory, you can run:
+The project consists of the following parts:
 
-### `npm start`
+1. **Navbar**: Navigation between the "All", "Active", and "Completed" tasks.
+2. **Task List**: Displays tasks based on the selected tab (All, Active, or Completed).
+3. **TextField & Add Button**: A single input component that allows users to add new tasks to the list.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### NavBar
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The navbar contains three tabs for filtering tasks:
 
-### `npm test`
+- **All**: Shows all tasks (both active and completed).
+- **Active**: Shows only tasks that are not completed.
+- **Completed**: Shows only tasks that are completed.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Navigation Tabs UI:
+The UI allows switching between tabs, and tasks will be filtered according to the selected tab.
 
-### `npm run build`
+### TextField and Add Button
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The textfield component and the Add button are present in all three tabs.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **TextField**: The user can input a new task here.
+- **Add Button**: When clicked, if the textfield is empty, an error message will be displayed. If a task is entered, it will be added to the list.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Task Management Logic
 
-### `npm run eject`
+- **Adding a Task**: When the Add button is clicked, the app adds a task object to the `todoList` array stored in `localStorage`. The task object includes:
+  - A random `taskId` (numeric string).
+  - The `taskName` (name of the task).
+  - A `completed` flag (boolean).
+  - A `createdAt` date (timestamp when the task is created).
+  
+- **Task Filtering**: The app displays tasks based on the selected filter (All, Active, or Completed). Each tab will show the relevant tasks accordingly.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Task UI Example:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Each task will be displayed with its name, and there will be a checkbox for the user to mark it as completed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Completed Task UI:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Completed tasks will have a different style to visually distinguish them from active tasks.
 
-## Learn More
+### Requirements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Use React Context API with `useContext` to manage the state of the to-do list.
+- Store the to-do list in `localStorage` to persist it even after the browser is closed.
+- Implement error handling for adding tasks when the input field is empty.
+## Preview of the Project 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### All Task
+![All Task](public/assets/All.png)
 
-### Code Splitting
+### Active Task
+![Active Task](public/assets/Active.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Completed Task
+![Stats Popup](public/assets/completed.png)
